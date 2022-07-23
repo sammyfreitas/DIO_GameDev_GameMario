@@ -51,6 +51,7 @@ function unflipCards() {
 function resetBoard() {
     [hasFlippedCard, lockBoard] = [false, false];
     [firstCard, secondCard] = [null, null];
+    shuffle();
 }
 
 // função para embaralhar as cartas
@@ -65,3 +66,13 @@ function resetBoard() {
 cards.forEach((card) => {
     card.addEventListener('click', flipCard)
 });
+
+function funcao1() {
+    var x;
+    var r = confirm("Deseja jogar novamente?");
+    if (r == true) {
+        location.reload();
+    } else {
+        x = "Até logo!";
+    }
+}
