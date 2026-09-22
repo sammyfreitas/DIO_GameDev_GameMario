@@ -1,5 +1,7 @@
 Mario Memory — versão atualizada
 
+https://sammyfreitas.github.io/DIO_GameDev_GameMario/
+
 Melhorias desta versão:
 - layout moderno, responsivo e mais organizado;
 - modo sem limite (cronômetro progressivo);
