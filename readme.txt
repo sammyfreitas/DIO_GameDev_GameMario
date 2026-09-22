@@ -1,21 +1,21 @@
-# Desenvolvendo um jogo da memória - Digital Innovation One
+Mario Memory — versão atualizada
 
-Projeto desenvolvido
--------------------------------------------------------
-Curso do Bootcamp JavaScript Game Developer da Digital Innovation One (https://digitalinnovation.one/).
-Nesse projeto, o desafio será criar um jogo da memória utilizando apenas HTML, CSS e Javascript. Com poucas linhas de código, aprenderemos juntos a trabalhar com efeitos 3D no CSS e lógica de programação utilizando condicionais, Immediately Invoked Function Expression e manipulação de Array em um projeto super divertido.
--------------------------------------------------------
+Melhorias desta versão:
+- layout moderno, responsivo e mais organizado;
+- modo sem limite (cronômetro progressivo);
+- modo contra o relógio (60 segundos);
+- pontuação baseada em pares, tempo e quantidade de erros;
+- contagem de erros e pares encontrados;
+- melhor pontuação salva no navegador (localStorage), separada por modo;
+- tema claro/escuro com preferência salva;
+- modal Sobre com informações do Bootcamp JavaScript Game Developer / DIO;
+- redes sociais no topo;
+- link atualizado do portfólio;
+- rodapé Anthony Freitas — Todos os Direitos Reservados;
+- correção da lógica original: as cartas não são mais reembaralhadas a cada tentativa.
 
-👨‍💻 Tecnologias utilizadas
-HTML
-CSS
-JavaScript
-
--------------------------------------------------------
-
-📝 Licença
-Este projeto está sob a licença MIT.
-
--------------------------------------------------------
-
-Made by Anthony Freitas
+Pontuação:
+- +500 pontos por par encontrado;
+- -80 pontos por erro;
+- -6 pontos por segundo decorrido;
+- no modo contra o relógio, +20 pontos por segundo restante ao concluir.

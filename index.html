@@ -1,107 +1,155 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="pt-BR" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <title>Jogo Memória do Super Mario</title>
-    <link rel="stylesheet" href="./css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Jogo da Memória inspirado no universo Mario, desenvolvido por Anthony Freitas durante o Bootcamp JavaScript Game Developer da Digital Innovation One.">
+  <title>Mario Memory | Anthony Freitas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
 </head>
-
 <body>
+  <header class="topbar">
+    <a class="brand" href="#game" aria-label="Ir para o jogo">
+      <span class="brand-mark">AF</span>
+      <span><strong>Mario Memory</strong><small>Anthony Freitas · JavaScript</small></span>
+    </a>
 
-    <span class="txtalign">
-        <h3>Projeto desenvolvido no Bootcamp TQI JavaScript da Digital Innovation One</h3><br>
-        <ul class="icons">
-            <li>
-                <a href="https://sammyfreitas.github.io/JogoDaVelha/" target="_blank">
-                    <button>Jogo da Velha</button></a>
-            </li>
-            <li>
-                <a href="https://sammyfreitas.github.io/SnakeGame/" target="_blank">
-                    <button>Snake Game</button></a>
-            </li>
-            <li>
-            <a href="https://sammyfreitas.github.io/portfolioSite/" target="_blank">
-                <button>Meu Site!</button>
-            </a>
-            </li>
+    <nav class="header-actions" aria-label="Links e opções">
+      <div class="socials" aria-label="Redes sociais de Anthony Freitas">
+        <a href="https://www.linkedin.com/in/tony-s-freitas/" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn">
+          <img src="https://cdn.simpleicons.org/linkedin/0A66C2" alt="">
+        </a>
+        <a href="https://github.com/sammyfreitas/" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub">
+          <img class="adaptive-icon" src="https://cdn.simpleicons.org/github/181717" alt="">
+        </a>
+        <a href="https://x.com/TonySdeFreitas" target="_blank" rel="noopener noreferrer" title="X" aria-label="X">
+          <img class="adaptive-icon" src="https://cdn.simpleicons.org/x/111111" alt="">
+        </a>
+        <a href="https://www.instagram.com/anthony_tijuduke/" target="_blank" rel="noopener noreferrer" title="Instagram" aria-label="Instagram">
+          <img src="https://cdn.simpleicons.org/instagram/E4405F" alt="">
+        </a>
+        <a href="https://www.facebook.com/anthonyfreitas78" target="_blank" rel="noopener noreferrer" title="Facebook" aria-label="Facebook">
+          <img src="https://cdn.simpleicons.org/facebook/0866FF" alt="">
+        </a>
+        <a href="https://discord.com/channels/999307907160088607/999307907160088609" target="_blank" rel="noopener noreferrer" title="Discord" aria-label="Discord">
+          <img src="https://cdn.simpleicons.org/discord/5865F2" alt="">
+        </a>
+        <a href="https://wa.me/5521986140005" target="_blank" rel="noopener noreferrer" title="WhatsApp" aria-label="WhatsApp">
+          <img src="https://cdn.simpleicons.org/whatsapp/25D366" alt="">
+        </a>
+      </div>
+      <a class="portfolio-link" href="https://sammyfreitas.github.io/portfolio/" target="_blank" rel="noopener noreferrer">Portfólio</a>
+      <button class="icon-button" id="aboutButton" type="button" aria-label="Sobre o projeto" title="Sobre o projeto">i</button>
+      <button class="icon-button theme-toggle" id="themeToggle" type="button" aria-label="Alternar tema" title="Alternar tema"><span id="themeIcon">☀</span></button>
+    </nav>
+  </header>
 
-            <li><button onclick="funcao1()">Embaralhar novamente</button><br></li>
-            <p id="demo"></p>
-            </ul>
+  <main class="page" id="game">
+    <section class="hero">
+      <div>
+        <span class="eyebrow">PROJETO · JAVASCRIPT GAME DEVELOPER</span>
+        <h1>Memória, estratégia<br><span>e velocidade.</span></h1>
+        <p>Uma releitura do desafio clássico de jogo da memória, com modos de partida, pontuação por desempenho e uma interface renovada.</p>
+        <div class="project-tags" aria-label="Tecnologias do projeto"><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Responsivo</span></div>
+      </div>
+      <div class="mode-selector" role="group" aria-label="Modo de jogo">
+        <button class="mode-button active" data-mode="free" type="button"><strong>Sem limite</strong><span>Jogue no seu ritmo</span></button>
+        <button class="mode-button" data-mode="timed" type="button"><strong>Contra o relógio</strong><span>60 segundos</span></button>
+      </div>
+    </section>
 
-
-    </span>
-    <main class="memory-game">
-        <div class="card" data-card="koopa">
-            <img class="card-front" src="./assets/imagens/koopa.jpg" alt="Face da carta">
-            <img class="card-back" src="./assets/imagens/box.png" alt="Verso da carta">
+    <section class="game-shell">
+      <aside class="stats-panel" aria-label="Estatísticas da partida">
+        <div class="stat-card primary">
+          <span class="stat-label" id="timeLabel">TEMPO</span>
+          <strong class="stat-value" id="timeValue">00:00</strong>
+          <span class="stat-help" id="timeHelp">Tempo decorrido</span>
         </div>
-
-        <div class="card" data-card="luigi">
-            <img class="card-front" src="./assets/imagens/luigi.png" alt="Face da carta">
-            <img class="card-back" src="./assets/imagens/box.png" alt="Verso da carta">
+        <div class="stat-card">
+          <span class="stat-label">PONTOS</span>
+          <strong class="stat-value" id="scoreValue">0</strong>
+          <span class="stat-help">Quanto mais, melhor</span>
         </div>
-
-        <div class="card" data-card="mario">
-            <img class="card-front" src="./assets/imagens//mario.png" alt="Face da carta">
-            <img class="card-back" src="./assets/imagens/box.png" alt="Verso da carta">
+        <div class="stat-card">
+          <span class="stat-label">ERROS</span>
+          <strong class="stat-value" id="errorsValue">0</strong>
+          <span class="stat-help">Cada par incorreto conta 1</span>
         </div>
-
-        <div class="card" data-card="peach">
-            <img class="card-front" src="./assets/imagens/peach.png" alt="Face da carta">
-            <img class="card-back" src="./assets/imagens/box.png" alt="Verso da carta">
+        <div class="stat-card">
+          <span class="stat-label">PARES</span>
+          <strong class="stat-value"><span id="matchesValue">0</span>/6</strong>
+          <span class="stat-help">Complete todos</span>
         </div>
-
-        <div class="card" data-card="toad">
-            <img class="card-front" src="./assets/imagens/toad.png" alt="Face da carta">
-            <img class="card-back" src="./assets/imagens/box.png" alt="Verso da carta">
+        <div class="stat-card best-card">
+          <span class="stat-label">MELHOR PONTUAÇÃO</span>
+          <strong class="best-value" id="bestScoreValue">0</strong>
         </div>
+      </aside>
 
-        <div class="card" data-card="yoshi">
-            <img class="card-front" src="./assets/imagens/yoshi.png" alt="Face da carta">
-            <img class="card-back" src="./assets/imagens/box.png" alt="Verso da carta">
+      <div class="board-area">
+        <div class="game-status" id="gameStatus">Clique em “Iniciar jogo” para começar.</div>
+        <div class="memory-game" id="memoryGame" aria-label="Tabuleiro do jogo da memória">
+          <button class="card" data-card="koopa" type="button" aria-label="Carta fechada"><span class="card-inner"><img class="card-front" src="./assets/imagens/koopa.jpg" alt="Koopa"><img class="card-back" src="./assets/imagens/box.png" alt=""></span></button>
+          <button class="card" data-card="luigi" type="button" aria-label="Carta fechada"><span class="card-inner"><img class="card-front" src="./assets/imagens/luigi.png" alt="Luigi"><img class="card-back" src="./assets/imagens/box.png" alt=""></span></button>
+          <button class="card" data-card="mario" type="button" aria-label="Carta fechada"><span class="card-inner"><img class="card-front" src="./assets/imagens/mario.png" alt="Mario"><img class="card-back" src="./assets/imagens/box.png" alt=""></span></button>
+          <button class="card" data-card="peach" type="button" aria-label="Carta fechada"><span class="card-inner"><img class="card-front" src="./assets/imagens/peach.png" alt="Peach"><img class="card-back" src="./assets/imagens/box.png" alt=""></span></button>
+          <button class="card" data-card="toad" type="button" aria-label="Carta fechada"><span class="card-inner"><img class="card-front" src="./assets/imagens/toad.png" alt="Toad"><img class="card-back" src="./assets/imagens/box.png" alt=""></span></button>
+          <button class="card" data-card="yoshi" type="button" aria-label="Carta fechada"><span class="card-inner"><img class="card-front" src="./assets/imagens/yoshi.png" alt="Yoshi"><img class="card-back" src="./assets/imagens/box.png" alt=""></span></button>
+          <button class="card" data-card="koopa" type="button" aria-label="Carta fechada"><span class="card-inner"><img class="card-front" src="./assets/imagens/koopa.jpg" alt="Koopa"><img class="card-back" src="./assets/imagens/box.png" alt=""></span></button>
+          <button class="card" data-card="luigi" type="button" aria-label="Carta fechada"><span class="card-inner"><img class="card-front" src="./assets/imagens/luigi.png" alt="Luigi"><img class="card-back" src="./assets/imagens/box.png" alt=""></span></button>
+          <button class="card" data-card="mario" type="button" aria-label="Carta fechada"><span class="card-inner"><img class="card-front" src="./assets/imagens/mario.png" alt="Mario"><img class="card-back" src="./assets/imagens/box.png" alt=""></span></button>
+          <button class="card" data-card="peach" type="button" aria-label="Carta fechada"><span class="card-inner"><img class="card-front" src="./assets/imagens/peach.png" alt="Peach"><img class="card-back" src="./assets/imagens/box.png" alt=""></span></button>
+          <button class="card" data-card="toad" type="button" aria-label="Carta fechada"><span class="card-inner"><img class="card-front" src="./assets/imagens/toad.png" alt="Toad"><img class="card-back" src="./assets/imagens/box.png" alt=""></span></button>
+          <button class="card" data-card="yoshi" type="button" aria-label="Carta fechada"><span class="card-inner"><img class="card-front" src="./assets/imagens/yoshi.png" alt="Yoshi"><img class="card-back" src="./assets/imagens/box.png" alt=""></span></button>
         </div>
-
-        <div class="card" data-card="koopa">
-            <img class="card-front" src="./assets/imagens/koopa.jpg" alt="Face da carta">
-            <img class="card-back" src="./assets/imagens/box.png" alt="Verso da carta">
+        <div class="game-controls">
+          <button class="main-button" id="startButton" type="button">▶ Iniciar jogo</button>
+          <button class="secondary-button" id="restartButton" type="button">↻ Embaralhar e reiniciar</button>
         </div>
+      </div>
+    </section>
 
-        <div class="card" data-card="luigi">
-            <img class="card-front" src="./assets/imagens/luigi.png" alt="Face da carta">
-            <img class="card-back" src="./assets/imagens/box.png" alt="Verso da carta">
-        </div>
+    <section class="rules">
+      <div><span>1</span><p><strong>Escolha o modo</strong>Sem limite ou contra o relógio.</p></div>
+      <div><span>2</span><p><strong>Encontre os pares</strong>Vire duas cartas por vez.</p></div>
+      <div><span>3</span><p><strong>Faça mais pontos</strong>Rapidez e precisão valem mais.</p></div>
+    </section>
+  </main>
 
-        <div class="card" data-card="mario">
-            <img class="card-front" src="./assets/imagens/mario.png" alt="Face da carta">
-            <img class="card-back" src="./assets/imagens/box.png" alt="Verso da carta">
-        </div>
-        <div class="card" data-card="peach">
-            <img class="card-front" src="./assets/imagens/peach.png" alt="Face da carta">
-            <img class="card-back" src="./assets/imagens/box.png" alt="Verso da carta">
-        </div>
+  <footer>
+    <div class="footer-main"><p>© <span id="year"></span> Anthony Freitas · Todos os Direitos Reservados</p><a href="https://sammyfreitas.github.io/portfolio/" target="_blank" rel="noopener noreferrer">Portfólio</a></div>
+    <a class="legacy-link" href="./versao-original/" target="_blank" rel="noopener noreferrer" title="Abrir a primeira versão do projeto">Ver versão original do projeto <span>↗</span></a>
+  </footer>
 
-        <div class="card" data-card="toad">
-            <img class="card-front" src="./assets/imagens/toad.png" alt="Face da carta">
-            <img class="card-back" src="./assets/imagens/box.png" alt="Verso da carta">
-        </div>
+  <dialog class="modal" id="aboutModal">
+    <div class="modal-content">
+      <button class="modal-close" type="button" data-close="aboutModal" aria-label="Fechar">×</button>
+      <span class="eyebrow">SOBRE O PROJETO</span>
+      <h2>Jogo da Memória</h2>
+      <p>Curso do Bootcamp JavaScript Game Developer da <a href="https://digitalinnovation.one/" target="_blank" rel="noopener noreferrer">Digital Innovation One</a>. Nesse projeto, o desafio será criar um jogo da memória utilizando apenas HTML, CSS e Javascript.</p>
+      <p>Com poucas linhas de código, aprenderemos juntos a trabalhar com efeitos 3D no CSS e lógica de programação utilizando condicionais, Immediately Invoked Function Expression e manipulação de Array em um projeto super divertido.</p>
+      <p class="modal-note">Esta versão foi ampliada com modos de jogo, cronômetro, pontuação, contagem de erros, melhor pontuação, responsividade e tema claro/escuro.</p>
+      <a class="compare-link" href="./versao-original/" target="_blank" rel="noopener noreferrer">Conhecer a versão original e comparar a evolução ↗</a>
+    </div>
+  </dialog>
 
-        <div class="card" data-card="yoshi">
-            <img class="card-front" src="./assets/imagens/yoshi.png" alt="Face da carta">
-            <img class="card-back" src="./assets/imagens/box.png" alt="Verso da carta">
-        </div>
-    </main>
+  <dialog class="modal" id="resultModal">
+    <div class="modal-content result-content">
+      <span class="result-icon" id="resultIcon">🏆</span>
+      <h2 id="resultTitle">Parabéns!</h2>
+      <p id="resultMessage"></p>
+      <div class="result-grid">
+        <div><span>Pontos</span><strong id="resultScore">0</strong></div>
+        <div><span>Tempo</span><strong id="resultTime">00:00</strong></div>
+        <div><span>Erros</span><strong id="resultErrors">0</strong></div>
+      </div>
+      <button class="main-button" id="playAgainButton" type="button">Jogar novamente</button>
+    </div>
+  </dialog>
 
-    <script src="./scripts/script.js"></script>
-
-    <footer>
-        <span class="txtalign">
-            Desenvolvido por <a href="https://sammyfreitas.github.io/portfolioSite/" target="_blank">Sammy Freitas - Front-End Developer</a>
-            <br><a href="mailto:sammyfreitas@gmail.com?subject=Fale Conosco">Email: sammyfreitas@gmail.com</a></strong>
-        </span>
-    </footer>
-
+  <script src="./scripts/script.js"></script>
 </body>
-
 </html>
